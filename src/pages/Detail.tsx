@@ -16,6 +16,7 @@ const DetailTask = () => {
   const task: Task = useParams();
   const [todo, setTodo] = useState<Task>({ content: "" });
   const [updated, setUpdated] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   // const [newContent, setNewContent] = useState<string>();
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -52,7 +53,8 @@ const DetailTask = () => {
       })
       .catch((err) => {
         alert(err.toString());
-      });
+      })
+      .finally(() => setLoading(false));
   }
 
   return (
@@ -64,14 +66,14 @@ const DetailTask = () => {
         >
           <textarea
             rows={12}
-            value={todo?.content}
+            value={loading ? "Loading..." : todo?.content}
             onChange={(e) => setTodo({ ...todo, content: e.target.value })}
             className="w-full mb-3 rounded-xl p-4"
           />
           <div className="flex justify-end ">
-            <Button type="submit" label="Update Tugas" />
+            <Button type="submit" label="Update" />
           </div>
-          {updated && <div>Tugas berhasil diperbarui</div>}
+          {updated && <div>Update Success</div>}
         </form>
       </div>
     </Layout>

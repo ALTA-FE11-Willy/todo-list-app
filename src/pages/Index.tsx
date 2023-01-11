@@ -107,7 +107,7 @@ export const Index = () => {
         <div className="rounded-2xl w-full flex flex-col p-6 bg-white dark:bg-gray-500 shadow-xl mb-16">
           <Input
             id="input-task"
-            label="Insert a new task"
+            label="Insert a New Task"
             value={inputTask}
             onChange={(e) => setInputTask(e.target.value)}
           />
@@ -131,8 +131,8 @@ export const Index = () => {
               </div>
             </p>
             <div className="flex gap-3  flex-col justify-end items-end">
-              <Button label="Edit" onClick={todo.onClickEdit} />
-              <Button label="Hapus" onClick={() => handleDeleteTask(todo)} />
+              <Button label="Edit" onClick={() => onClickDetail(todo)} />
+              <Button label="Delete" onClick={() => handleDeleteTask(todo)} />
             </div>
           </div>
         ))}
